@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FS - Payment</title>
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="./images/FSFavicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/payment.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
+    <div class="container">
+      <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.html">
+        <span class = "text-uppercase fw-lighter ms-2"><img src="./images/FS.SHOP.png" alt="company-logo"></span>
+    </a>
+
+      <div class="order-lg-2 nav-btns">
+        <button type="button" class="btn position-relative shopping-cart-btn">
+          <a href="./payment.html"><img src="./images/shopping-cart.png" width="25px" alt="shopping-cart"></a>
+        </button>
+      </div>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse order-lg-1" id="navMenu">
+        <ul class="navbar-nav mx-auto text-center">
+          <li class="nav-item px-2 py-2">
+            <a class="nav-link text-uppercase text-dark" href="./index.html">home</a>
+          </li>
+          <li class="nav-item px-2 py-2">
+            <a class="nav-link text-uppercase text-dark" href="./collection.html">collection</a>
+          </li>
+          <li class="nav-item px-2 py-2">
+            <a class="nav-link text-uppercase text-dark" href="./casual.html">casual</a>
+          </li>
+          <li class="nav-item px-2 py-2">
+            <a class="nav-link text-uppercase text-dark" href="./party.html">Party</a>
+          </li>
+          <li class="nav-item px-2 py-2">
+            <a class="nav-link text-uppercase text-dark" href="./wedding.html">wedding</a>
+          </li>
+          <li class="nav-item px-2 py-2">
+            <a class="nav-link text-uppercase text-dark" href="./aboutus.html">about us</a>
+          </li>
+          <li class="nav-item px-2 py-2">
+            <a class="nav-link text-uppercase text-dark" href="./contactus.html">Contact us</a>
+          </li>
+          <li class="nav-item px-2 py-2 border-0">
+            <a class="nav-link text-uppercase text-dark" href="./site-map.html">site map</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- end of navbar -->
+
+  <!-- Payment Section-->
+  <main class="page payment-page">
+    <section class="payment-form dark" style="margin-top: 100px!important;">
+      <div class="container">
+        <div class="block-heading">
+          <h2 class = "position-relative d-inline-block ms-4 pay-title">Payment</h2>
+          <p>Your payment is powered by Stripe.</p>
+        </div>
+        <form>
+          <div class="products">
+            <h3 class="title checkout">Checkout</h3>
+            <div class="item">
+              <span class="price">$50.00</span>
+              <p class="item-name">LimeLight 2 Piece Suit</p>
+              <p class="item-description">Item #: LL0001</p>
+            </div>
+            <div class="item">
+              <span class="price">$70.00</span>
+              <p class="item-name">Chinyere 3 Piece Suit</p>
+              <p class="item-description">Item #: CH0001</p>
+            </div>
+            <div class="total">Total<span class="price">$120.00</span></div>
+          </div>
+          <div class="card-details">
+            <h3 class="title">Credit Card Details</h3>
+            <div class="container cc-section">
+              <div class="row d-flex justify-content-center">
+                <div class="col col-sm-2">
+                  <img src="./images/cc-visa-brands.svg" alt="visa-icon">
+                </div>
+                <div class="col col-sm-2">
+                  <img src="./images/cc-mastercard-brands.svg" alt="mastercard-icon">
+                </div>
+                <div class="col col-sm-2">
+                  <img src="./images/cc-discover-brands.svg" alt="discover-icon">
+                </div>
+                <div class="col col-sm-2">
+                  <img src="./images/cc-amex-brands.svg" alt="amex-icon">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-7">
+                <label for="card-holder">Card Holder</label>
+                <input id="card-holder" required type="text" class="form-control" placeholder="Card Holder"
+                  aria-label="Card Holder" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-5">
+                <label for="">Expiration Date</label>
+                <div class="input-group expiration-date">
+                  <input type="text" class="form-control" required placeholder="MM" aria-label="MM"
+                    aria-describedby="basic-addon1">
+                  <span class="date-separator">/</span>
+                  <input type="text" class="form-control" placeholder="YY" aria-label="YY"
+                    aria-describedby="basic-addon1">
+                </div>
+              </div>
+              <div class="form-group col-sm-8">
+                <label for="card-number">Card Number</label>
+                <input id="card-number" required type="text" class="form-control" placeholder="Card Number"
+                  aria-label="Card Holder" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="cvc">CVC</label>
+                <input id="cvc" type="text" required class="form-control" placeholder="CVC" aria-label="Card Holder"
+                  aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-block proceed-btn" data-bs-toggle="modal" data-bs-target="#paymentConfirmed">Pay Now!</button>
+              </div>
+              <div class="container">
+                <div style="text-align: center;">
+                  <img src="./images/lock-solid.svg" width="10px" alt="lock-icon">
+                </div>
+              </div>
+            </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- End of Payment Section-->
+
+  <!-- Modal for Payment -->
+<div class="modal fade" id="paymentConfirmed" tabindex="-1" role="dialog" aria-labelledby="paymentModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentConfirmedTitle">Success!</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6 style="text-align: center;">Congratulations!</h6>
+        <p style="text-align: center;">Your order has been successfully placed!</p>
+        <p style="text-align: center;">Thank you for shopping!</p>
+      </div>
+      <div class="modal-footer">
+        <a href = "./index.html" class = "btn btn-primary mt-3 price-btn">DONE</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal for Payment -->
+
+  <!-- footer -->
+  <footer class="bg-dark py-5">
+    <div class="container">
+      <div class="row text-white g-4">
+        <div class="col-md-6 col-lg-3">
+          <a class="text-uppercase text-decoration-none brand text-white" href="./index.html">FS.SHOP</a>
+          <p class="text-white text-muted mt-3">Our mission is to provide the best experience, you need it for last minute casual gathering, planned parties or upcoming weddings? We have it all!</p>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <h5 class="fw-light">Links</h5>
+          <ul class="list-unstyled ul-links">
+            <li class="my-3">
+              <a href="./index.html" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> Home
+              </a>
+            </li>
+            <li class="my-3">
+              <a href="./collection.html" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> Collection
+              </a>
+            </li>
+            <li class="my-3">
+              <a href="./casual.html" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> Casual
+              </a>
+            </li>
+            <li class="my-3">
+              <a href="./party.html" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> Party
+              </a>
+            </li>
+          </ul>
+          <ul class="list-unstyled ul-links ul-links2">
+            <li class="my-3">
+              <a href="./wedding.html" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> Wedding
+              </a>
+            </li>
+            <li class="my-3">
+              <a href="./aboutus.html" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> About Us
+              </a>
+            </li>
+            <li class="my-3">
+              <a href="./contactus.html" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> Contact Us
+              </a>
+            </li>
+            <li class="my-3">
+              <a href="./site-map.html" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> Site Map
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <h5 class="fw-light mb-3">Business Info</h5>
+          <div class="d-flex justify-content-start align-items-start my-2 text-muted">
+            <span class="me-3">
+              <a href="https://goo.gl/maps/5ZrUvJosYftruAUF8" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-map-marked-alt"></i>
+              </a>
+            </span>
+            <span class="fw-light">
+              E-Commerce, Lorton, VA, 22079 United States of America
+            </span>
+          </div>
+          <div class="d-flex justify-content-start align-items-start my-2 text-muted">
+            <span class="me-3">
+              <a href="mailto:info@fs-shop.com" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </span>
+            <span class="fw-light">
+              info@fs-shop.com
+            </span>
+          </div>
+          <div class="d-flex justify-content-start align-items-start my-2 text-muted">
+            <span class="me-3">
+              <a href="tel:703-894-7730" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-phone-alt"></i>
+              </a>
+            </span>
+            <span class="fw-light">
+              +1 (703) 894-7730
+            </span>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <h5 class="fw-light mb-3">Follow Us</h5>
+          <div>
+            <ul class="list-unstyled d-flex">
+              <li>
+                <a href="https://www.facebook.com/marketplace"
+                  class="text-white text-decoration-none text-muted fs-4 me-4">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.twitter.com" class="text-white text-decoration-none text-muted fs-4 me-4">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com" class="text-white text-decoration-none text-muted fs-4 me-4">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- end of footer -->
+</body>
+
+</html>

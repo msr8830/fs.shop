@@ -1,0 +1,17 @@
+#canvas {
+    margin-left: 200px;
+    display: block;
+}
+
+/* media queries */
+@media(max-width: 992px){
+    #canvas {
+        margin-left: 0px;
+    }
+}
+
+@media(max-width: 800px){
+    #canvas {
+        display: none;
+    }
+}

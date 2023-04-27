@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="authoring-tool" content="Adobe_Animate_CC">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FS - About</title>
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="./images/FSFavicon.png">
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap css -->
+    <link rel = "stylesheet" href = "bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <!-- custom css -->
+    <link rel = "stylesheet" href = "css/main.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/aboutus.css">
+    <!-- bootstrap js -->
+    <script src = "bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="scripts/fsShop.js"></script>
+<script>
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("7AC2E91AF3B14C03B4D909A4DCC56790");
+	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();	
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.fsShop();
+	stage = new lib.Stage(canvas);	
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.framerate = lib.properties.fps;
+		createjs.Ticker.addEventListener("tick", stage);
+	}	    
+	//Code to support hidpi screens and responsive scaling.
+	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+</script>
+</head>
+<body onload="init();" style="margin:0px;">
+    
+    <!-- navbar -->
+    <nav class = "navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
+        <div class = "container">
+            <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.html">
+                <span class = "text-uppercase fw-lighter ms-2"><img src="./images/FS.SHOP.png" alt="company-logo"></span>
+            </a>
+
+            <div class = "order-lg-2 nav-btns">
+                <button type = "button" class = "btn position-relative">
+                    <a href="./payment.html"><img src="./images/shopping-cart.png" width="25px" alt="shopping-cart"></a>
+                </button>
+            </div>
+
+            <button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">
+                <span class = "navbar-toggler-icon"></span>
+            </button>
+
+            <div class = "collapse navbar-collapse order-lg-1" id = "navMenu">
+                <ul class = "navbar-nav mx-auto text-center">
+                    <li class = "nav-item px-2 py-2">
+                        <a class = "nav-link text-uppercase text-dark" href = "./index.html">home</a>
+                    </li>
+                    <li class = "nav-item px-2 py-2">
+                        <a class = "nav-link text-uppercase text-dark" href = "./collection.html">collection</a>
+                    </li>
+                    <li class = "nav-item px-2 py-2">
+                        <a class = "nav-link text-uppercase text-dark" href = "./casual.html">casual</a>
+                    </li>
+                    <li class = "nav-item px-2 py-2">
+                        <a class = "nav-link text-uppercase text-dark" href = "./party.html">Party</a>
+                    </li>
+                    <li class = "nav-item px-2 py-2">
+                        <a class = "nav-link text-uppercase text-dark" href = "./wedding.html">wedding</a>
+                    </li>
+                    <li class = "nav-item px-2 py-2">
+                        <a class = "nav-link text-uppercase text-dark" href = "./aboutus.html">about us</a>
+                    </li>
+                    <li class = "nav-item px-2 py-2">
+                        <a class = "nav-link text-uppercase text-dark" href = "./contactus.html">Contact us</a>
+                    </li>
+                    <li class = "nav-item px-2 py-2 border-0">
+                        <a class = "nav-link text-uppercase text-dark" href = "./site-map.html">site map</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end of navbar -->
+
+    <!-- Animation Section-->
+    <div class="container animate">
+        <div class="row">
+            <div class="col">
+                <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:800px; height:600px">
+                    <canvas id="canvas" width="800" height="600" style="position: absolute; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+                    <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:800px; height:600px; position: absolute; left: 0px; top: 0px; display: block;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Animation Section-->
+
+    <!-- about us -->
+    <section id = "about" class = "py-5">
+        <div class = "container">
+            <div class = "row gy-lg-5 align-items-center">
+                <div class = "col-lg-6 order-lg-1 text-center text-lg-start">
+                    <div class = "title pt-3 pb-5">
+                        <h2 class = "position-relative d-inline-block ms-4">About Us</h2>
+                    </div>
+                    <p class = "lead text-muted">An idea that started within the family, to a reality that has now reached millions of people.</p>
+                    <p>FS.SHOP is a fictitious renowned fashion clothing company that was founded in 2010. Under the vision of reselling attractive and comfortable outfits for women of every age and persona, FS.SHOP is working hard to provide high-quality cloths at a very affordable price range. All stitched western or eastern, formal or semi-formal, women or girls, FS.SHOP proudly excels at every niche.</p>
+                </div>
+                <div class = "col-lg-6 order-lg-0">
+                    <img src = "images/about_us.jpg" alt = "A women holding receipt with new cloths on." class = "img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of about us -->
+
+    <!-- google maps -->
+    <section id = "about" class = "py-5">
+        <div class = "container">
+            <div class = "row gy-lg-5 align-items-center">
+                <div class = "col-lg-6 order-lg-1 text-center text-lg-start">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d99640.44509899127!2d-77.30753993867755!3d38.70026706072648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b652c374a0a4a1%3A0xaf239558b282f5a3!2sLorton%2C%20VA!5e0!3m2!1sen!2sus!4v1651438870850!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class = "col-lg-6 order-lg-0">
+                    <p class = "lead text-muted">This is where it all started!</p>
+                <p>FS.SHOP was founded in Lorton, VA, the home to our idea and success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of google maps -->
+
+   <!-- footer -->
+   <footer class = "bg-dark py-5">
+    <div class = "container">
+        <div class = "row text-white g-4">
+            <div class = "col-md-6 col-lg-3">
+                <a class = "text-uppercase text-decoration-none brand text-white" href = "./index.html">FS.SHOP</a>
+                <p class = "text-white text-muted mt-3">Our mission is to provide the best experience, you need it for last minute casual gathering, planned parties or upcoming weddings? We have it all!</p>
+            </div>
+
+            <div class = "col-md-6 col-lg-3">
+                <h5 class = "fw-light">Links</h5>
+                <ul class = "list-unstyled ul-links">
+                    <li class = "my-3">
+                        <a href = "./index.html" class = "text-white text-decoration-none text-muted">
+                            <i class = "fas fa-chevron-right me-1"></i> Home
+                        </a>
+                    </li>
+                    <li class = "my-3">
+                        <a href = "./collection.html" class = "text-white text-decoration-none text-muted">
+                            <i class = "fas fa-chevron-right me-1"></i> Collection
+                        </a>
+                    </li>
+                    <li class = "my-3">
+                        <a href = "./casual.html" class = "text-white text-decoration-none text-muted">
+                            <i class = "fas fa-chevron-right me-1"></i> Casual
+                        </a>
+                    </li>
+                    <li class = "my-3">
+                        <a href = "./party.html" class = "text-white text-decoration-none text-muted">
+                            <i class = "fas fa-chevron-right me-1"></i> Party
+                        </a>
+                    </li>
+                </ul>
+                <ul class = "list-unstyled ul-links ul-links2">
+                    <li class = "my-3">
+                        <a href = "./wedding.html" class = "text-white text-decoration-none text-muted">
+                            <i class = "fas fa-chevron-right me-1"></i> Wedding
+                        </a>
+                    </li>
+                    <li class = "my-3">
+                        <a href = "./aboutus.html" class = "text-white text-decoration-none text-muted">
+                            <i class = "fas fa-chevron-right me-1"></i> About Us
+                        </a>
+                    </li>
+                    <li class = "my-3">
+                        <a href = "./contactus.html" class = "text-white text-decoration-none text-muted">
+                            <i class = "fas fa-chevron-right me-1"></i> Contact Us
+                        </a>
+                    </li>
+                    <li class = "my-3">
+                        <a href = "./site-map.html" class = "text-white text-decoration-none text-muted">
+                            <i class = "fas fa-chevron-right me-1"></i> Site Map
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class = "col-md-6 col-lg-3">
+                <h5 class = "fw-light mb-3">Business Info</h5>
+                <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                    <span class = "me-3">
+                        <a href="https://goo.gl/maps/5ZrUvJosYftruAUF8" class="text-white text-decoration-none text-muted">
+                            <i class = "fas fa-map-marked-alt"></i>
+                        </a>
+                    </span>
+                    <span class = "fw-light">
+                        E-Commerce, Lorton, VA, 22079 United States of America
+                    </span>
+                </div>
+                <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                    <span class = "me-3">
+                        <a href="mailto:info@fs-shop.com" class="text-white text-decoration-none text-muted">
+                            <i class = "fas fa-envelope"></i>
+                        </a>
+                    </span>
+                    <span class = "fw-light">
+                        info@fs-shop.com
+                    </span>
+                </div>
+                <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                    <span class = "me-3">
+                        <a href="tel:703-894-7730" class="text-white text-decoration-none text-muted">
+                            <i class = "fas fa-phone-alt"></i>
+                        </a>
+                    </span>
+                    <span class = "fw-light">
+                        +1 (703) 894-7730
+                    </span>
+                </div>
+            </div>
+
+            <div class = "col-md-6 col-lg-3">
+                <h5 class = "fw-light mb-3">Follow Us</h5>
+                <div>
+                    <ul class = "list-unstyled d-flex">
+                        <li>
+                            <a href = "https://www.facebook.com/marketplace" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                <i class = "fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href = "https://www.twitter.com" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                <i class = "fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href = "https://www.instagram.com" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                <i class = "fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end of footer -->
+</body>
+</html>
